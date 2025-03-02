@@ -1,39 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 
 export default function HomeScreen() {
   const [task, setTask] = useState('');
-  const [tasks, setTasks] = useState<string[]>([]);
+  const [currentTask, setCurrentTask] = useState<string | null>(null);
 
   const addTask = () => {
     if (task.trim().length > 0) {
-      setTasks([...tasks, task]);
+      setCurrentTask(task);
       setTask('');
     }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>할 일 목록</Text>
-
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          value={task}
-          onChangeText={setTask}
-          placeholder="할 일을 입력하세요"
-          placeholderTextColor="#999"
-        />
-        <TouchableOpacity style={styles.addButton} onPress={addTask}>
-          <Text style={styles.buttonText}>추가</Text>
-        </TouchableOpacity>
-      </View>
-
-      {tasks.map((item, index) => (
-        <Text key={index} style={styles.taskItem}>
-          {item}
-        </Text>
-      ))}
+      <Text style={styles.title}>hello</Text>
     </View>
   );
 }
@@ -42,7 +23,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#1E4D6B',  // 코발트 블루 계열
+    backgroundColor: '#0D0D0D',  // 코발트 블루 계열
     justifyContent: 'center',      // 수직 중앙 정렬
     alignItems: 'center',          // 수평 중앙 정렬
   },
